@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
-      resources :users, only: [:index, :show, :create, :update]
-        resources :followships, only: [:create, :destroy]
-
+     
     collection do
       get :feeds
 
@@ -26,7 +24,9 @@ Rails.application.routes.draw do
 
   end
 
-  resources :users, only: [:show, :edit, :update]
+   resources :users, only: [:index, :show, :edit, :update]
+   resources :followships, only: [:create, :destroy]
+
 
   resources :categories, only: :show
   root "restaurants#index"
