@@ -7,7 +7,17 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:user])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+
+  private
+
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:alert] = "Not allow!"
+      redirect_to root_path
+    end
+  end
+
 end

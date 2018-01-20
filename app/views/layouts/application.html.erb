@@ -24,8 +24,6 @@
          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="pull-right text-right nav navbar-nav">
-              <p class="notice"><%= notice %></p>
-              <p class="alert"><%= alert %></p>
               <% if current_user %>
                 <% if current_user.admin? %>
                  <li><%= link_to 'Admin後台', admin_restaurants_path %></li>
