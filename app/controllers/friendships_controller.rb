@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
   end
 
    def destroy
-    @friendship = current_user.friendship.where(following_id: params[:id]).first
+    @friendship = current_user.friendships.where(friend_id: params[:id]).first
     @friendship.destroy
     flash[:alert] = "Friendship destroyed"
     redirect_back(fallback_location: root_path)
